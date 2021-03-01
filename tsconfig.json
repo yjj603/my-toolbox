@@ -1,0 +1,23 @@
+{
+  "include": [
+    "./src"
+  ],
+  "compilerOptions": {
+    "target": "ESNEXT",
+    "module": "ESNext",
+    "lib": [
+      "dom",
+      "esnext",
+      "ES2015",
+      "ES2016",
+      "ES2017"
+    ],
+    "declaration": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "esModuleInterop": true
+  }
+}
