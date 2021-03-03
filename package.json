@@ -8,7 +8,8 @@
     "build": "tsc && rollup -c",
     "test": "jest --no-cache",
     "coverage": "jest --coverage",
-    "server": "live-server --open=./public/index.html"
+    "server": "live-server --open=./public/index.html",
+    "run": "tsc ./src/index.ts"
   },
   "main": "lib/bundle.esm.js",
   "keywords": [],

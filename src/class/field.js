@@ -173,7 +173,8 @@ class BaseSelect extends Field {
                     value
                 } : {
                 label: label[this.params[0]],
-                value: label[this.params[1]]
+                value: label[this.params[1]],
+                ...label
             };
         });
         s && this.setFilters();
@@ -424,11 +425,11 @@ class FieldList {
     filter(fn) {
         return this.list.filter(fn);
     }
-    reduce(fn) {
-        return this.list.reduce(fn);
+    reduce(fn, current) {
+        return this.list.reduce(fn, current);
     }
     *[Symbol.iterator]() {
-        yield* this.list.values();
+        yield* this.list;
     }
 }
 export { Input, InputNumber, Select, SelectMultiple, InputDate, DateRange, Checkbox, Radio, Upload, FieldList };

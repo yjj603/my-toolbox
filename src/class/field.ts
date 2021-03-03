@@ -196,7 +196,8 @@ abstract class BaseSelect extends Field {
                     value
                 } : {
                     label: label[this.params[0]],
-                    value: label[this.params[1]]
+                    value: label[this.params[1]],
+                    ...label
                 }
         })
         s && this.setFilters()
@@ -355,13 +356,13 @@ class FieldList {
         }
     }
 
-    insert(key:string|number, field:Field, before = false):FieldList{
+    insert(key: string | number, field: Field, before = false): FieldList {
         if (isNumber(key)) {
             const index = Math.round(key)
             const list = cloneDeep(this.list)
             list.splice(index, 0, field)
             return new FieldList(list)
-        }else if (isString(key)) {
+        } else if (isString(key)) {
             const index = before ? this.findIndex(key) - 1 : this.findIndex(key)
             const list = cloneDeep(this.list)
             list.splice(index, 0, field)
@@ -447,15 +448,14 @@ class FieldList {
         return this.list.filter(fn)
     }
 
-    reduce(fn: (previousValue: Field, currentValue: Field, currentIndex: number, array: Field[]) => Field) {
-        return this.list.reduce(fn)
+    reduce(fn: (previousValue: Field, currentValue: Field, currentIndex: number, array: Field[]) => Field, current: any):any {
+        return this.list.reduce(fn, current)
     }
 
     * [Symbol.iterator]() {
-        yield* this.list.values()
+        yield* this.list
     }
 }
-
 export {
     Input,
     InputNumber,

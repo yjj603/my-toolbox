@@ -107,7 +107,7 @@ declare class FieldList {
     every(fn: (value: Field, index: number, array: Field[]) => value is Field): boolean;
     map(fn: (value: Field, index: number, array: Field[]) => unknown): unknown[];
     filter(fn: (value: Field, index: number, array: Field[]) => value is Field): Field[];
-    reduce(fn: (previousValue: Field, currentValue: Field, currentIndex: number, array: Field[]) => Field): Field;
+    reduce(fn: (previousValue: Field, currentValue: Field, currentIndex: number, array: Field[]) => Field, current: any): any;
     [Symbol.iterator](): Generator<Field, void, undefined>;
 }
 export { Input, InputNumber, Select, SelectMultiple, InputDate, DateRange, Checkbox, Radio, Upload, FieldList };
